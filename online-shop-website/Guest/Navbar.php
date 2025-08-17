@@ -1,0 +1,68 @@
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-dark mb-30">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
+                    <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Danh mục đồ chơi</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
+                <?php
+                    include ('C:\xampp\htdocs\online-shop-website-template\Moldel\MoldelGuest.php');
+                    $getdata=new DATA();
+                    $select=$getdata->Xem_DM();
+                    foreach($select as $se_pro)
+                {
+                 ?>
+                 <div class="navbar-nav w-100">
+                
+                        <a href="Theodanhmuc.php?id=<?php echo$se_pro['ma_danh_muc'] ?>" class="nav-item nav-link"><?php echo $se_pro['ten_danh_muc'] ?></a>
+                        
+                    </div>
+                    <?php } ?>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <span class="h1 text-uppercase text-dark bg-light px-2">CAOLY</span>
+                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Toys</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="index.php" class="nav-item nav-link">Trang chủ</a>
+                            <a href="cuahang.php" class="nav-item nav-link">Cửa hàng</a>
+                           
+                            <?php if (isset($_SESSION['username'])): ?>
+                                <a href="Giohang.php" class="nav-item nav-link">Giỏ hàng</a>
+                                <a href="Hoadon.php" class="nav-item nav-link">Đơn hàng</a>
+                            <?php else: ?>
+                                <a href="" class="nav-item nav-link" onclick="alert('Bạn cần đăng nhập '); return false;" >Giỏ hàng</a>
+                                <a href="" class="nav-item nav-link" onclick="alert('Bạn cần đăng nhập '); return false;" >Đơn hàng</a>
+                            <?php endif ?>
+                            <a href="" class="nav-item nav-link">liên hệ</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <a href="" class="btn px-0">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                            </a>
+                            <a href="" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+  
